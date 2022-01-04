@@ -1,9 +1,8 @@
-let articles = [];
 const cardContainer = document.querySelector('.card-container');
-
 const innverNav = document.querySelector('.inner-nav');
 const header = document.querySelector('header');
 const menu = document.querySelector('.menu');
+
 menu.addEventListener('mouseover', () => {
     innverNav.classList.add('active');
     header.classList.add('active');
@@ -13,23 +12,13 @@ innverNav.addEventListener('mouseleave', () => {
     header.classList.remove('active');
 });
 
-const template = `<div class="card-container">
-<div class="card">
-    <h3 id="title">
-        
-    </h3>
-    <div class="image-container">
-        
-    </div>
-    <p></p>
-</div>
-</div>`
-
 const retrieveData = async () => {
     const resp = await fetch('../db/articles.json');
     const data = await resp.json();
     return data;
 }
+
+let articles = [];
 
 retrieveData().then((data) => {
 
